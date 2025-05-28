@@ -4,8 +4,17 @@ const qrcode = require('qrcode-terminal');
 const client = new Client({
     authStrategy: new LocalAuth(),
     puppeteer: {
-        headless: false,
-        args: ['--no-sandbox', '--disable-setuid-sandbox']
+        headless: true, // Ensure Puppeteer runs in headless mode
+        args: [
+            '--no-sandbox',
+            '--disable-setuid-sandbox',
+            '--disable-dev-shm-usage',
+            '--disable-accelerated-2d-canvas',
+            '--disable-gpu',
+            '--no-first-run',
+            '--no-zygote',
+            '--single-process'
+        ]
     }
 });
 
